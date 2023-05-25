@@ -129,4 +129,5 @@ class DataController extends GetxController {
   }
 
   //! Student //////////////////////////////////////////////////////////////////
+  RxList<int> selectedAnswer = RxList();
 }

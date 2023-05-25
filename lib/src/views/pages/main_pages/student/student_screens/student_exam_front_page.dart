@@ -1,14 +1,17 @@
 import 'package:class_room/app_constants.dart';
+import 'package:class_room/src/controllers/data_controllers/data_controller.dart';
 import 'package:class_room/src/models/pojo_classes/exam_model.dart';
 import 'package:class_room/src/views/pages/main_pages/student/student_screens/student_exam_paper.dart';
 import 'package:class_room/src/views/widgets/boxes/custom_animated_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class StudentExamFrontPage extends StatelessWidget {
   final ExamModel examModel;
-  const StudentExamFrontPage({super.key, required this.examModel});
+  StudentExamFrontPage({super.key, required this.examModel});
+  final DataController dataController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,11 @@ class StudentExamFrontPage extends StatelessWidget {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => StudentExamPaper(examModel: examModel)),
+        onPressed: () {
+          dataController.selectedAnswer.value = List<int>.generate(examModel.questions.length, (index) => -1);
+
+          Get.to(() => StudentExamPaper(examModel: examModel));
+        },
         child: const Text("Start"),
       ),
     );
