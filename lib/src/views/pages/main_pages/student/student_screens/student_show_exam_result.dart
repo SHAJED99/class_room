@@ -83,7 +83,9 @@ class StudentShowExamResult extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Q ${element.key + 1}. ${element.value.question}", style: buttonText1.copyWith(color: defaultBlackColor)),
-                          const SizedBox(height: defaultPadding),
+                          const SizedBox(height: defaultPadding / 2),
+                          const Divider(thickness: 1),
+                          const SizedBox(height: defaultPadding / 4),
                           for (var e in element.value.possibleAnswers.asMap().entries.map((e) => e).toList())
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: defaultPadding / 4),
