@@ -1,0 +1,4 @@
+enum EnterAs {
+  teacher,
+  student,
+}
